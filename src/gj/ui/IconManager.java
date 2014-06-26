@@ -11,7 +11,11 @@ import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import org.apache.log4j.Logger;
+
 public class IconManager {
+	final private static Logger logger = Logger.getLogger(IconManager.class);
+	
 	private static Map<String,Image> cache=new HashMap<String,Image>();
 	
 	public static Icon getIcon(String name){
@@ -22,8 +26,9 @@ public class IconManager {
 	public static Image getImage(String name){
 		if(cache.containsKey(name))return cache.get(name);
 		
-		URL url=IconManager.class.getClassLoader().getResource("gj\\res\\"+name);
+		URL url=IconManager.class.getClassLoader().getResource("gj/res/"+name);
 		if(url==null){
+			logger.error("Image not found:"+name);
 			return null;
 		}
 		Image img= Toolkit.getDefaultToolkit().getImage(url);

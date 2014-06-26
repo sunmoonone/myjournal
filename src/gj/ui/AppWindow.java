@@ -11,6 +11,7 @@ import gj.actions.TableActions;
 import gj.actions.ToolbarActions;
 import gj.actions.AppsActions;
 import gj.actions.UserActions;
+import gj.ui.swing.custom.SwingUiUtils;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -25,29 +26,32 @@ import javax.swing.JMenuItem;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
+import org.apache.log4j.Logger;
 
 public class AppWindow {
-
+	private static final Logger logger = Logger.getLogger(AppWindow.class);
 	private JFrame frame;
 	private JMenuBar menuBar;
 	private JToolBar toolbar;
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		//System.getProperty("user.name");
 		//System.getProperty("user.home");
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				AppWindow window = null;
 				try {
-					AppWindow window = new AppWindow();
+					window = new AppWindow();
 					window.frame.setVisible(true);
 					//ToolActions.newVolume.fire(window.frame);
 					//Actions.verifyPassword.fire(window.frame);
 					window.setupMainFrame();
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error(e);
+					SwingUiUtils.alert(window.frame,e.getMessage());
 				}
 			}
 		});
@@ -146,6 +150,7 @@ public class AppWindow {
 		
 		frame.add(MainPane.getInstance(),BorderLayout.CENTER);
 		frame.validate();
+		logger.error("finish setup");
 	}
 	
 	private void addActionToMenu(GJAction a, JMenu menu) {

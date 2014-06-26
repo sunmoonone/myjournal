@@ -8,7 +8,7 @@ import smn.dal.model.SmnModel;
 import smn.dal.model.StringCol;
 import smn.dal.query.Value;
 
-public class Tree extends SmnModel<Integer>{
+public class TreeData extends SmnModel<Integer>{
 
 	final public IntCol id=new IntCol("id",KeyType.Primary);
 	final public IntCol pid=new IntCol("pid",true);
@@ -30,7 +30,7 @@ public class Tree extends SmnModel<Integer>{
 
 	@Override
 	public String __getTable() {
-		return "entry";
+		return "tree_data";
 	}
 
 }

@@ -6,6 +6,7 @@ import java.awt.GraphicsConfiguration;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class SwingUiUtils {
@@ -26,5 +27,9 @@ public class SwingUiUtils {
 	public static Component getAncestorFrame(Component com) {
 		return SwingUtilities.getAncestorOfClass(Frame.class,
 				com);
+	}
+
+	public static void alert(Component parent,String message) {
+		JOptionPane.showMessageDialog(parent, message);
 	}
 }

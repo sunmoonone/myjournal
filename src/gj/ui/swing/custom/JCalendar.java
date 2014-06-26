@@ -34,7 +34,8 @@ public class JCalendar extends JPanel {
 	
 	public JCalendar(int firstDayOfWeek) {
 		setLayout(new BorderLayout());
-		this.setPreferredSize(new Dimension(210, 180));
+		this.setMinimumSize(new Dimension(210, 185));
+		this.setPreferredSize(new Dimension(210, 185));
 
 		JPanel p1 = new JPanel();
 		p1.setLayout(new GridBagLayout());
